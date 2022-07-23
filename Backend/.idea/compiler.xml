@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="notes-challenge" />
         <module name="GitHubjoacibb-Ensolvers-challange-main" />
+        <module name="Backend" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Backend" options="-parameters" />
       <module name="GitHubjoacibb-Ensolvers-challange-main" options="-parameters" />
       <module name="notes-challenge" options="-parameters" />
     </option>
