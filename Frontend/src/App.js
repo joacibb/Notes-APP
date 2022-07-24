@@ -14,14 +14,17 @@ function App() {
 
   const [notes,setNotes] = useState([])
 
+  const [listUpdated,setListUpdated] = useState(false)
+
   useEffect(() => {
     const getNotes = () => {
-      fetch('http://localhost:8080/api/notes')
+      fetch('http://localhost:8080/api/notes/available')
             .then(res => res.json())
             .then(res => setNotes(res))
     }
     getNotes()
-  }, [])
+    setListUpdated(false)
+  }, [listUpdated])
 
   return (
     <Fragment>
@@ -30,7 +33,7 @@ function App() {
         <div className="row">
           <div className="col-7">
             <h2 style={{textAlign: 'center'}}>Note List</h2>
-            <NoteList notes={notes}/>
+            <NoteList note={note} notes={notes} listUpdated={listUpdated} setListUpdated={setListUpdated}/>
           </div>
           <div className="col-5">
             <h2 style={{textAlign:'center'}}>Note Form</h2>
