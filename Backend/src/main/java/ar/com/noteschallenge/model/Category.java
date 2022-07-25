@@ -52,4 +52,12 @@ public class Category {
         } else if (!id.equals(other.id)) return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

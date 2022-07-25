@@ -18,9 +18,7 @@ public class NoteDTO implements Serializable {
 
     private boolean archived;
 
-    private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
     private List<Category> categories = new ArrayList<>();
     public NoteDTO(Long id, String title, String content, boolean archived, List<Category> categories){
         this.id = id;
@@ -30,10 +28,7 @@ public class NoteDTO implements Serializable {
         this.categories = categories;
     }
 
-    public NoteDTO(){
-        createdAt=LocalDateTime.now();
-        updatedAt=createdAt;
-    }
+    public NoteDTO(){}
 
     public Long getId() {
         return this.id;
@@ -79,6 +74,9 @@ public class NoteDTO implements Serializable {
         this.categories = categories;
     }
 
-    public void setUpdatedAt(){updatedAt=LocalDateTime.now();}
+    public void addCategory(String category){
+        Category c1 = new Category(category);
+        categories.add(c1);
+    }
 
 }

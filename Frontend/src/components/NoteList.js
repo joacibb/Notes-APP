@@ -13,7 +13,7 @@ const NoteList = ({note, notes, setListUpdated}) => {
     setListUpdated(true)
   }
 
-  let{title,content} = note
+  let{title,content,categories} = note
 
   const handleUpdate = id =>{
     //data validation
@@ -32,6 +32,8 @@ const NoteList = ({note, notes, setListUpdated}) => {
 
     setListUpdated(true)
   }
+
+
   return(
       <table className="table">
         <thead>

@@ -83,7 +83,7 @@ public class NoteController {
     }
 
     @PutMapping(value="/notes/{id}/{category}")
-    public void updateCategory(@PathVariable Long id,@PathVariable String category) {
+    public void updateCategory(@PathVariable     Long id,@PathVariable String category) {
         noteService.updateCategory(noteService.findById(id),category);
     }
 

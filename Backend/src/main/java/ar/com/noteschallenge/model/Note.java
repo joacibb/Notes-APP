@@ -30,14 +30,6 @@ public class Note implements Serializable {
     @OneToMany( cascade = {CascadeType.ALL})
     List<Category> categories = new ArrayList<>();
 
-   /* @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    Date createdAt;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    Date updateAt;*/
-
     public List<Category> getCategories() {
         return categories;
     }

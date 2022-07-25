@@ -1,14 +1,15 @@
 import './App.css';
 import React,{Fragment, useState, useEffect} from "react";
-import Navbar from "./Components/Navbar";
-import NoteList from "./Components/NoteList";
-import Form from "./Components/Form";
+import Navbar from "./components/Navbar";
+import NoteList from "./components/NoteList";
+import Form from "./components/Form";
 
 function App() {
 
   const [note,setNote] = useState({
     title: '',
     content:'',
+    categories:[],
     archived:false
   })
 
@@ -33,7 +34,7 @@ function App() {
         <div className="row">
           <div className="col-7">
             <h2 style={{textAlign: 'center'}}>Note List</h2>
-            <NoteList note={note} notes={notes} listUpdated={listUpdated} setListUpdated={setListUpdated}/>
+            <NoteList note={note} notes={notes}  listUpdated={listUpdated} setListUpdated={setListUpdated}/>
           </div>
           <div className="col-5">
             <h2 style={{textAlign:'center'}}>Note Form</h2>

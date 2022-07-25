@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = ({note,setNote}) => {
+const Form = ({note,setNote,setListUpdated}) => {
 
   const handleChange = e =>{
     setNote({
@@ -8,7 +8,7 @@ const Form = ({note,setNote}) => {
     [e.target.name]: e.target.value
     })
   }
-  let{title,content} = note
+  let{title,content,categories} = note
 
   const handleSubmit = () => {
     //data validation
@@ -32,8 +32,33 @@ const Form = ({note,setNote}) => {
     setNote({
       title: '',
       content: '',
+      categories:[]
     })
   }
+
+ /* const handleAddCategory = (id,categories) =>{
+    //data validation
+    if (categories === '' || content === '') {
+      alert('Invalid data')
+      return
+    }
+    const requestInit = {
+      method: 'PUT',
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify(note)
+    }
+    console.log('{debug category: }'+categories)
+    fetch('http://localhost:8080/api/notes/' + id +'/' + categories, requestInit)
+        .then(res => res.text())
+        .then(res => console.log(res))
+
+
+    setNote({
+      categories:''
+    })
+
+    setListUpdated(true)
+  }*/
 
   return(
     <form onSubmit={handleSubmit}>
@@ -45,12 +70,14 @@ const Form = ({note,setNote}) => {
         <label htmlFor="content" className="form-label">Content</label>
           <textarea value={content} name="content" onChange={handleChange} id="content" className="form-control"></textarea>
       </div>
+      {/*
       <div className="mb-3">
         <label htmlFor="categories" className="form-label">Categories</label>
         <input name="categories" onChange={handleChange} type="text" id="categories" className="form-control"/>
-      </div>
+      </div>*/}
 
       <button type="submit" className="btn btn-primary">Submit</button>
+      {/* <button onClick={() => handleAddCategory(note.id, note.categories)} className="btn btn-dark">Add Category</button>*/}
     </form>
   )
 }

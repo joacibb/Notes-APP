@@ -119,18 +119,19 @@ public class NoteServiceImpl implements NoteService{
      * @param category
      */
     public void updateCategory(Note note, String category) {
-          Long idCategory = categoryService.findByName(category);
+        Long idCategory = categoryService.findByName(category);
 
-          if(idCategory!=null){
-             Category cat = categoryService.findById(idCategory);
-              note.setCategory(categoryService.clone(cat));
-              save(note);
-          }
-          else{
-              Category newCategory = new Category(category);
-              categoryService.save(newCategory);
-              note.setCategory(newCategory);
-          }
+        if(idCategory!=null && !note.findCategoryClass(category)){
+            Category cat = categoryService.findById(idCategory);
+            note.setCategory(categoryService.clone(cat));
+            save(note);
+        }
+        else{
+            if(!note.findCategoryClass(category)){
+            Category newCategory = new Category(category);
+            categoryService.save(newCategory);
+            note.setCategory(newCategory);}
+        }
         save(note);
     }
 
